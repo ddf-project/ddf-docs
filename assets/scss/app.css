@@ -5457,7 +5457,9 @@ footer {
       display: table; }
     footer .content:after {
       clear: both; }
-
+    footer .content .social{
+      float: right;
+    }
 .push {
   height: 55px; }
 
