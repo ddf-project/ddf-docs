@@ -5786,3 +5786,23 @@ section .content {
 body.tutorial div[data-magellan-expedition] {
   top: 65px !important;
   min-width: 1px !important; }
+
+#ddf-intro .content .cta {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#ddf-intro .content .cta a {
+  width: 220px;
+  margin-right: 22px;
+}
+
+.download {
+  background: #FFF;
+  border: 2px solid #007b86;
+  color: #007b86;
+}
+
+.get-started {
+  border: 2px solid #009aa7;
+}
