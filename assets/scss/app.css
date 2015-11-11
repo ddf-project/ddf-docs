@@ -5793,8 +5793,9 @@ body.tutorial div[data-magellan-expedition] {
 }
 
 #ddf-intro .content .cta a {
-  width: 250px;
+  width: 332px;
   font-size: 1.5rem;
+  margin-top: 25px;
 }
 
 .download {
