@@ -5645,6 +5645,9 @@ header {
     list-style: none; }
     #ddf-intro .benefits li {
       margin: 10px 0px; }
+      #ddf-intro .benefits li .fa{
+        color: #009aa7;
+      }
   #ddf-intro .token.operator, #ddf-intro .token.entity, #ddf-intro .token.url, #ddf-intro .language-css .token.string, #ddf-intro .style .token.string {
     color: #a67f59;
     background: none; }
@@ -5782,6 +5785,42 @@ section .content {
   margin-bottom: 30px; }
   #ddf-principles h4 {
     color: #009aa7; }
+  #ddf-principles h2{
+    text-align: center;
+    font-size: 2.9rem;
+  }
+#implementation {
+  overflow: hidden;
+  margin: 50px auto;
+}
+
+#implementation .columns {
+  margin-bottom: 30px;
+}
+
+#implementation ul{
+  list-style: none;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+#implementation ul li{
+  display: inline-block;
+  margin-right: 65px;
+}
+#implementation ul li:last-child{
+  margin-right: 0;
+}
+#implementation h2{
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2.9rem;
+}
+
+#implementation img{
+  height: 45px;
+}
 
 body.tutorial div[data-magellan-expedition] {
   top: 65px !important;
@@ -5796,14 +5835,5 @@ body.tutorial div[data-magellan-expedition] {
   width: 332px;
   font-size: 1.5rem;
   margin-top: 25px;
-}
-
-.download {
-  background: #FFF;
-  border: 2px solid #007b86;
-  color: #007b86;
-}
-
-.get-started {
-  border: 2px solid #009aa7;
+  text-decoration: none;
 }
