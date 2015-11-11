@@ -5787,14 +5787,14 @@ body.tutorial div[data-magellan-expedition] {
   top: 65px !important;
   min-width: 1px !important; }
 
-#ddf-intro .content .cta {
+#ddf-intro .content .cta, #ddf-intro .content .secondary-cta {
   margin: 0 auto;
   text-align: center;
 }
 
 #ddf-intro .content .cta a {
-  width: 220px;
-  margin-right: 22px;
+  width: 250px;
+  font-size: 1.5rem;
 }
 
 .download {
