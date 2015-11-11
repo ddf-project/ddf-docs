@@ -110,7 +110,7 @@ DDF table = smanager.sql2ddf("select * from airline");
 Summary[] summary = table.summary()
 
 /* ETL, transform */
-table = table.Transform.transformUDF("dist= round(distance/2, 2)");
+table = table.Transform.transformUDF("dist= round(distance/3, 2)");
 
 /* Run Machine learning using MLlib */
 KMeansModel kmeansModel = (KMeansModel) ddf.ML.train("kmeans", 5, 5).getRawModel();
