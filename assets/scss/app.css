@@ -5643,8 +5643,11 @@ header {
   #ddf-intro .benefits {
     margin: 50px 0px 0px 0px;
     list-style: none; }
+    #ddf-intro #section1 h4{
+      font-size: 1.7rem;
+    }
     #ddf-intro .benefits li {
-      margin: 10px 0px; }
+      margin: 10px 0px; font-size: 1.2rem;}
       #ddf-intro .benefits li .fa{
         color: #009aa7;
       }
@@ -5738,7 +5741,7 @@ header {
   background: #181921;
   color: #fff; }
   #testimonials h1, #testimonials h2, #testimonials h3, #testimonials h4, #testimonials h5, #testimonials h6 {
-    color: #00D7E0;
+    color: #00D7E0; text-align: center;
     padding-left: 0.9375rem; }
   #testimonials ul {
     margin: 0px;
@@ -5782,7 +5785,9 @@ section .content {
     clear: both; }
 
 #ddf-principles {
-  margin-bottom: 30px; }
+  margin-bottom: 30px; 
+  margin-top: 10px;  
+}
   #ddf-principles h4 {
     color: #009aa7; }
   #ddf-principles h2{
@@ -5791,7 +5796,7 @@ section .content {
   }
 #implementation {
   overflow: hidden;
-  margin: 50px auto;
+  margin: 0px auto;
 }
 
 #implementation .columns {
@@ -5835,5 +5840,9 @@ body.tutorial div[data-magellan-expedition] {
   width: 332px;
   font-size: 1.5rem;
   margin-top: 25px;
+  text-decoration: none;
+}
+
+#ddf-intro .content .secondary-cta a{
   text-decoration: none;
 }
