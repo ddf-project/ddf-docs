@@ -103,22 +103,21 @@ Distributed DataFrame</h1>
               <div class="content active" id="ddf-java">
                 <pre class="language-clike">
 <code class="language-clike">//To start working with a DDF-on-Spark cluster:
-DDFMananager smanager = DDFManager.get("spark");
-
+DDFManager smanager = DDFManager.get("spark");
 //Then, data can be loaded into a SparkDDF as follows:
-DDF table = smanager.sql2ddf("select * from airline");
-
-/* Basic Statistic */
-Summary[] summary = table.summary()
-
+DDF table = smanager.sql2ddf("select * from airline", "spark");
 /* ETL, transform */
-table = table.Transform.transformUDF("dist= round(distance/3, 2)");
-
-/* Run Machine learning using MLlib */
+table = table.transform("dist= round(distance/2, 2)");
+/* Run Machine learning using MLlib, then run prediction */
 KMeansModel kmeansModel = (KMeansModel) ddf.ML.train("kmeans", 5, 5).getRawModel();
-
-/* Run prediction */
-Int prediction = ddf.ML.applyModel(kmeansModel, false, true)</code>
+Int prediction = ddf.ML.applyModel(kmeansModel, false, true)
+// To start working with flink:
+DDFManager fmanager = DDFManager.get("flink");
+// Data can be loaded into FlinkDDF as follows:
+DDF flinkTable = fmanager.sql2ddf("select * from airline", "flink");
+/* ETL, SQL query */
+flinkTable.sql("select * from @this", "Error in SQL");
+</code>
 </pre>
 </div>
               <div class="content" id="ddf-r">
