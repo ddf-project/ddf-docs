@@ -8,7 +8,7 @@
 
 Distributed DataFrame</title>
 
-    
+
         <!-- Hammer reload -->
           <script>
             setInterval(function(){
@@ -17,11 +17,11 @@ Distributed DataFrame</title>
                 ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
                 ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
                 ws.onmessage = function(){
-                  var links = document.getElementsByTagName('link'); 
-                    for (var i = 0; i < links.length;i++) { 
-                    var link = links[i]; 
-                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
-                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                  var links = document.getElementsByTagName('link');
+                    for (var i = 0; i < links.length;i++) {
+                    var link = links[i];
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) {
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,'');
                       link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
                     }
                   }
@@ -30,14 +30,14 @@ Distributed DataFrame</title>
             }, 1000)
           </script>
         <!-- /Hammer reload -->
-      
-  
+
+
     <link rel='stylesheet' href='assets/css/normalize.css'>
 <link rel='stylesheet' href='assets/js/modernizr/test/caniuse_files/style.css'>
 <link rel='stylesheet' href='assets/scss/app.css'>
 <link rel='stylesheet' href='assets/js/prismjs/prism.css'>
 <link rel='stylesheet' href='assets/css/extra.css'>
-    
+
     <link href='http://fonts.googleapis.com/css?family=Arimo:400,700|Open+Sans:300|Roboto:400,900' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/favicon.ico" rel="shortcut icon">
@@ -45,23 +45,44 @@ Distributed DataFrame</title>
   </head>
   <body class="quickstart">
     <div class="wrapper">
-    <header>
-      <ul>
-    <li class="logo"><a href="/">Home</a></li>
-    <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
-    <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
-    <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
-    <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
-    <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
-    <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
-     <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
-    <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
-    <li class="nav-contribute">
-      <a href="http://ddf.io/contribution.html" >Contribute</a>
-    </li>
+      <header class="desktop-menu">
+        <ul>
+      <li class="logo"><a href="/">Home</a></li>
+      <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
+      <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
+      <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
+      <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
+      <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
+      <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
+      <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
+      <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
+      <li class="nav-contribute">
+      	<a href="http://ddf.io/contribution.html">Contribute</a>
+        </li>
+        </ul>
+      </header>
+      <header class="mobile-menu">
+        <ul>
+          <li class="logo">
+            <a href="/">Home</a>
 
-</ul>
-    </header>
+            <span class="menu-button">
+              <i class="fa fa-bars fa-lg"></i>
+            </span>
+          </li>
+          <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
+          <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
+          <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
+          <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
+          <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
+          <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
+          <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
+          <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
+          <li class="nav-contribute-mobile">
+            <a href="http://ddf.io/contribution.html">Contribute</a>
+          </li>
+        </ul>
+      </header>
 
 <section>
   <ul class="iframe-links">
@@ -89,9 +110,9 @@ Distributed DataFrame</title>
       bottom: 0px;
       height: 100%;
       width: 100%;
-      display: block; overflow: scroll; 
+      display: block; overflow: scroll;
   "></iframe>
- 
+
 </section>
 
 
@@ -110,7 +131,7 @@ Distributed DataFrame</title>
 	<script src='assets/js/jquery-1.8.3.min.js'></script>
 <script src='assets/js/modernizr/modernizr.js'></script>
 <script src='assets/js/foundation/js/foundation.js'></script>
-<script src='assets/js/app.js'></script>
+<script src='assets/js/app.js?v=20151112'></script>
 <script src='assets/js/prismjs/prism.js'></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -122,6 +143,6 @@ Distributed DataFrame</title>
   ga('send', 'pageview');
 
 </script>
-	
+
 </body>
 </html>

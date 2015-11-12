@@ -8,7 +8,7 @@
 
 Distributed DataFrame</title>
 
-    
+
         <!-- Hammer reload -->
           <script>
             setInterval(function(){
@@ -17,11 +17,11 @@ Distributed DataFrame</title>
                 ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
                 ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
                 ws.onmessage = function(){
-                  var links = document.getElementsByTagName('link'); 
-                    for (var i = 0; i < links.length;i++) { 
-                    var link = links[i]; 
-                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
-                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                  var links = document.getElementsByTagName('link');
+                    for (var i = 0; i < links.length;i++) {
+                    var link = links[i];
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) {
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,'');
                       link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
                     }
                   }
@@ -30,16 +30,16 @@ Distributed DataFrame</title>
             }, 1000)
           </script>
         <!-- /Hammer reload -->
-      
-  
+
+
     <link rel='stylesheet' href='assets/css/normalize.css'>
 <link rel='stylesheet' href='assets/js/modernizr/test/caniuse_files/style.css'>
 <link rel='stylesheet' href='assets/scss/app.css'>
 <link rel='stylesheet' href='assets/js/prismjs/prism.css'>
 <link rel='stylesheet' href='assets/css/extra.css'>
-    
+
     <!-- <link href='http://fonts.googleapis.com/css?family=Arimo:400,700|Open+Sans:300|Roboto:400,900' rel='stylesheet' type='text/css'>
- -->    
+ -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400|Tenor+Sans' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/favicon.ico" rel="shortcut icon">
@@ -47,22 +47,44 @@ Distributed DataFrame</title>
   </head>
   <body class="design">
     <div class="wrapper">
-    <header>
-      <ul>
-    <li class="logo"><a href="/">Home</a></li>
-    <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
-    <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
-    <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
-    <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
-    <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
-    <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
-    <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
-    <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
-    <li class="nav-contribute">
-      <a href="http://ddf.io/contribution.html" >Contribute</a>
-    </li>
-</ul>
-    </header>
+      <header class="desktop-menu">
+        <ul>
+      <li class="logo"><a href="/">Home</a></li>
+      <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
+      <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
+      <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
+      <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
+      <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
+      <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
+      <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
+      <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
+      <li class="nav-contribute">
+      	<a href="http://ddf.io/contribution.html">Contribute</a>
+        </li>
+        </ul>
+      </header>
+      <header class="mobile-menu">
+        <ul>
+          <li class="logo">
+            <a href="/">Home</a>
+
+            <span class="menu-button">
+              <i class="fa fa-bars fa-lg"></i>
+            </span>
+          </li>
+          <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
+          <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
+          <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
+          <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
+          <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
+          <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
+          <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
+          <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
+          <li class="nav-contribute-mobile">
+            <a href="http://ddf.io/contribution.html">Contribute</a>
+          </li>
+        </ul>
+      </header>
 
 <section>
   <div class="content">
@@ -82,7 +104,7 @@ Distributed DataFrame</title>
       </p>
 
       <p>
-        It is easy to work with DDF as most of the time users deal with a simple tabular data  abstraction. It is called Distributed DataFrame, however, the distributed part is hidden from the user facing API, giving users a “small-data” manipulation experience. The DDF API has three core abstractions: DDFManager, DDFs and Handlers. The class diagram is illustrated in Figure 1. 
+        It is easy to work with DDF as most of the time users deal with a simple tabular data  abstraction. It is called Distributed DataFrame, however, the distributed part is hidden from the user facing API, giving users a “small-data” manipulation experience. The DDF API has three core abstractions: DDFManager, DDFs and Handlers. The class diagram is illustrated in Figure 1.
       </p>
 
       <p>
@@ -92,13 +114,13 @@ Distributed DataFrame</title>
           <figcaption>Figure 1. - DDF class diagram.</figcaption>
         </figure>
       </p>
-      
+
       <p>
         A <strong>Distributed DataFrame</strong> (DDF) is a table-like abstraction that wraps around a big data structure underneath.  As a table-like representation, DDF has a number of key properties such as metadata, schema. Users can run SQL queries, perform data table filtering, projections, group by and join on DDFs. As a R’s Data.Frame, DDF provides a simple yet rich set of data science idioms such as transparent handling of missing data, easy transformation, quick access to machine-learning algorithms.
       </p>
 
       <p>
-        A <strong>DDFManager</strong> is basically a DDF implementor. It creates the entry point to the big data engine that DDF sits on top, supports loading data from big data sources into DDFs and book-keepings the DDF pool. 
+        A <strong>DDFManager</strong> is basically a DDF implementor. It creates the entry point to the big data engine that DDF sits on top, supports loading data from big data sources into DDFs and book-keepings the DDF pool.
       </p>
 
       <p>
@@ -106,13 +128,13 @@ Distributed DataFrame</title>
       </p>
 
       <p>
-        We use the Dependency Injection, Delegation, and Composite patterns to make it easy for others to provide alternative (even snap-in replacements) support/implementation for DDF. The core DDF framework defines as a set of interfaces that are independent of the processing engine underneath. Therefore, there is a clean separation between the abstract concepts and the implementation so that the API can support multiple big data platforms under the same set of abstract concepts. 
+        We use the Dependency Injection, Delegation, and Composite patterns to make it easy for others to provide alternative (even snap-in replacements) support/implementation for DDF. The core DDF framework defines as a set of interfaces that are independent of the processing engine underneath. Therefore, there is a clean separation between the abstract concepts and the implementation so that the API can support multiple big data platforms under the same set of abstract concepts.
       </p>
 
       <h2>DDF-on-Spark</h2>
-      
+
       <p>
-        Spark is a powerful, in-memory parallel distributed compute engine.  DDF-on-Spark takes advantage of Spark's power, while exposing a simplified API for the data scientist/engineer to be extremely productive. At the same time, should you have a need to access Spark's RDD  for direct manipulation, that is also directly accessible via DDF as its underlying representation. 
+        Spark is a powerful, in-memory parallel distributed compute engine.  DDF-on-Spark takes advantage of Spark's power, while exposing a simplified API for the data scientist/engineer to be extremely productive. At the same time, should you have a need to access Spark's RDD  for direct manipulation, that is also directly accessible via DDF as its underlying representation.
       </p>
 
       <p>
@@ -130,7 +152,7 @@ Distributed DataFrame</title>
       <p>
         With DDF-on-Spark, users can perform sophisticated machine-learning training on terabyte-scale DDFs interactively, with just one or two lines of code to iterate to the next step in the data science workflow.
       </p>
-      
+
       <p>
         <figure>
           <img src="https://lh5.googleusercontent.com/0AhJNBm8WEGh-i9LGsiXQTWr_0qsTx34bH92lpp_SiaoP9BXCl4H35--abJKcNe-t34kwTcTNMxEmXXD80ox4ELid0MSh60UEVxfxYf4a-915klB1Sjcvz07SvqcQbe-6w" alt="">
@@ -184,7 +206,7 @@ Distributed DataFrame</title>
 
       <p>
         The DDF’s RepresentationHandler has built-in retrieval for various RDD representations so you can get direct access to the low-level data representation when needed
-        
+
         <pre class="language-clike">
               <code class="language-clike">
     ddf.getRepresentationHandler().get(RDD.class, LabeledPoint.class);</code>
@@ -210,7 +232,7 @@ Distributed DataFrame</title>
 	<script src='assets/js/jquery-1.8.3.min.js'></script>
 <script src='assets/js/modernizr/modernizr.js'></script>
 <script src='assets/js/foundation/js/foundation.js'></script>
-<script src='assets/js/app.js'></script>
+<script src='assets/js/app.js?v=20151112'></script>
 <script src='assets/js/prismjs/prism.js'></script>
 <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
