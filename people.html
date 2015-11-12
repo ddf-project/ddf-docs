@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Distributed Data Frame</title>
+    <title>
+
+Distributed DataFrame</title>
         <!-- Hammer reload -->
           <script>
             setInterval(function(){
@@ -13,11 +15,11 @@
                 ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
                 ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
                 ws.onmessage = function(){
-                  var links = document.getElementsByTagName('link'); 
-                    for (var i = 0; i < links.length;i++) { 
-                    var link = links[i]; 
-                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
-                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                  var links = document.getElementsByTagName('link');
+                    for (var i = 0; i < links.length;i++) {
+                    var link = links[i];
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) {
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,'');
                       link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
                     }
                   }
@@ -26,16 +28,16 @@
             }, 1000)
           </script>
         <!-- /Hammer reload -->
-      
-  
+
+
     <link rel='stylesheet' href='assets/css/normalize.css'>
 <link rel='stylesheet' href='assets/js/modernizr/test/caniuse_files/style.css'>
 <link rel='stylesheet' href='assets/scss/app.css'>
 <link rel='stylesheet' href='assets/js/prismjs/prism.css'>
 <link rel='stylesheet' href='assets/css/extra.css'>
-    
+
     <!-- <link href='http://fonts.googleapis.com/css?family=Arimo:400,700|Open+Sans:300|Roboto:400,900' rel='stylesheet' type='text/css'>
- -->    
+ -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400|Tenor+Sans' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/favicon.ico" rel="shortcut icon">
@@ -43,21 +45,44 @@
   </head>
   <body class="people">
     <div class="wrapper">
-    <header>
-      <ul>
-    <li class="logo"><a href="/">Home</a></li>
-    <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
-    <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
-    <li class="nav-design"><a href="design.html">Design Document</a></li>
-    <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
-    <li class="nav-download"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Downloads</a></li>
-    <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
-    <li class="nav-plans"><a href="plans.html">Plans</a></li>
-    <li class="nav-contribute">
-    	<a href="http://adatao.com/forms/ddf.html" >Contribute</a>
-    </li>
-</ul>
-    </header>
+      <header class="desktop-menu">
+        <ul>
+      <li class="logo"><a href="/">Home</a></li>
+      <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
+      <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
+      <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
+      <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
+      <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
+      <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
+      <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
+      <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
+      <li class="nav-contribute">
+      	<a href="http://ddf.io/contribution.html">Contribute</a>
+        </li>
+        </ul>
+      </header>
+      <header class="mobile-menu">
+        <ul>
+          <li class="logo">
+            <a href="/">Home</a>
+
+            <span class="menu-button">
+              <i class="fa fa-bars fa-lg"></i>
+            </span>
+          </li>
+          <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
+          <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
+          <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
+          <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
+          <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
+          <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
+          <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
+          <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
+          <li class="nav-contribute-mobile">
+            <a href="http://ddf.io/contribution.html">Contribute</a>
+          </li>
+        </ul>
+      </header>
      <iframe frameborder="0" src="markdown/people.html" style="
     position: fixed;
     top: 74px;
@@ -66,18 +91,24 @@
     bottom: 0px;
     height: 100%;
     width: 100%;
-    display: block; overflow: scroll; 
+    display: block; overflow: scroll;
 "></iframe>
 	</div>
 	<footer>
       <div class="content">
         Project supported by <a href="http://www.adatao.com" target="_blank">Adatao</a>
+        <div class="social">
+          <a class="github-button" href="https://github.com/ddf-project/DDF" data-count-href="/ddf-project/DDF/stargazers" data-count-api="/repos/ddf-project/DDF#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star ddf-project/DDF on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/ddf-project/DDF/fork" data-count-href="/ddf-project/DDF/network" data-count-api="/repos/ddf-project/DDF#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork ddf-project/DDF on GitHub">Fork</a>
+        </div>
       </div>
     </footer>
 	<script src='assets/js/jquery-1.8.3.min.js'></script>
 <script src='assets/js/modernizr/modernizr.js'></script>
 <script src='assets/js/foundation/js/foundation.js'></script>
-<script src='assets/js/app.js'></script>
+<script src='assets/js/app.js?v=20151112'></script>
 <script src='assets/js/prismjs/prism.js'></script>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>

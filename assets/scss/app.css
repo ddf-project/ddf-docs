@@ -5457,7 +5457,9 @@ footer {
       display: table; }
     footer .content:after {
       clear: both; }
-
+    footer .content .social{
+      float: right;
+    }
 .push {
   height: 55px; }
 
@@ -5641,8 +5643,14 @@ header {
   #ddf-intro .benefits {
     margin: 50px 0px 0px 0px;
     list-style: none; }
+    #ddf-intro #section1 h4{
+      font-size: 1.7rem;
+    }
     #ddf-intro .benefits li {
-      margin: 10px 0px; }
+      margin: 15px 0px; font-size: 1.2rem;}
+      #ddf-intro .benefits li .fa{
+        color: #009aa7;
+      }
   #ddf-intro .token.operator, #ddf-intro .token.entity, #ddf-intro .token.url, #ddf-intro .language-css .token.string, #ddf-intro .style .token.string {
     color: #a67f59;
     background: none; }
@@ -5733,7 +5741,7 @@ header {
   background: #181921;
   color: #fff; }
   #testimonials h1, #testimonials h2, #testimonials h3, #testimonials h4, #testimonials h5, #testimonials h6 {
-    color: #00D7E0;
+    color: #00D7E0; text-align: center;
     padding-left: 0.9375rem; }
   #testimonials ul {
     margin: 0px;
@@ -5777,10 +5785,64 @@ section .content {
     clear: both; }
 
 #ddf-principles {
-  margin-bottom: 30px; }
+  margin-bottom: 30px; 
+  margin-top: 10px;  
+}
   #ddf-principles h4 {
     color: #009aa7; }
+  #ddf-principles h2{
+    text-align: center;
+    font-size: 2.9rem;
+  }
+#implementation {
+  overflow: hidden;
+  margin: 0px auto;
+}
+
+#implementation .columns {
+  margin-bottom: 30px;
+}
+
+#implementation ul{
+  list-style: none;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+#implementation ul li{
+  display: inline-block;
+  margin-right: 65px;
+}
+#implementation ul li:last-child{
+  margin-right: 0;
+}
+#implementation h2{
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2.9rem;
+}
+
+#implementation img{
+  height: 45px;
+}
 
 body.tutorial div[data-magellan-expedition] {
   top: 65px !important;
   min-width: 1px !important; }
+
+#ddf-intro .content .cta, #ddf-intro .content .secondary-cta {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#ddf-intro .content .cta a {
+  width: 332px;
+  font-size: 1.5rem;
+  margin-top: 25px;
+  text-decoration: none;
+}
+
+#ddf-intro .content .secondary-cta a{
+  text-decoration: none;
+}

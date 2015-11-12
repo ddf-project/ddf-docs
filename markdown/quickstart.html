@@ -33,14 +33,17 @@ This tutorial provides a quick introduction to using DDF with its implementation
 ## Prerequisites
 Java 7+, Scala 2.10.x, maven 3.x, git. 
 
-First clone DDF from github
+Download the DDF Binary from the website, or
+Clone DDF from github
 
 ```
 git clone https://github.com/ddf-project/DDF
 ```
 <a name="building-ddf"></a>
 ## Building DDF
-DDF is currently compatible with Spark 1.2. For first time installation, it is required to run bin/run-once to download dependencies and sbt. Go into the top-level DDF directory and run:
+If you're a binary user, you can skip the building part.
+
+DDF is currently compatible with Spark 1.3.1. For first time installation, it is required to run bin/run-once to download dependencies and sbt. Go into the top-level DDF directory and run:
 
 ``` sh
  bin/run-once.sh
@@ -73,21 +76,21 @@ Each DDF application has a DDFManager as an entry point to a big data engine. To
 Now, let’s create a DDFManager for the Spark engine.
 ``` java
 import  io.ddf.DDFManager;
-DDFManager manager = DDFManager.get("spark");
+DDFManager sparkDDFManager = DDFManager.get(DDFManager.EngineType.SPARK);
 ```
 
 Prepare data to run
 ``` java
-manager.sql2txt("drop table if exists airline");
-manager.sql2txt("create table airline (Year int,Month int,DayofMonth int,DayOfWeek int,DepTime int,CRSDepTime int,ArrTime int,CRSArrTime int,UniqueCarrier string, FlightNum int,TailNum string, ActualElapsedTime int, CRSElapsedTime int, AirTime int, ArrDelay int, DepDelay int, Origin string,Dest string, Distance int, TaxiIn int, TaxiOut int, Cancelled int, CancellationCode string, Diverted string, CarrierDelay int, WeatherDelay int, NASDelay int, SecurityDelay int, ArcraftDelay int ) ROW FORMAT DELIMITED FIELDS TERMINATED BY \',\'");
-manager.sql2txt("load data local inpath 'resources/test/airline.csv' into table airline");
+sparkDDFManager.sql("create table airline (Year int,Month int,DayofMonth int, DayOfWeek int,DepTime int,CRSDepTime int,ArrTime int,CRSArrTime int,UniqueCarrier string, FlightNum int, TailNum string, ActualElapsedTime int, CRSElapsedTime int, AirTime int, ArrDelay int, DepDelay int, Origin string, Dest string, Distance int, TaxiIn int, TaxiOut int, Cancelled int, CancellationCode string, Diverted string, CarrierDelay int, WeatherDelay int, NASDelay int, SecurityDelay int, LateAircraftDelay int ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ','", "spark");
+sparkDDFManager.sql("load data local inpath './resources/airlineWithNA.csv' into table airline", "spark");
 ```
 
 Create DDF
 ``` java
-DDF ddf = manager.sql2ddf("select * from airline");
-#Get the number of rows/columns of the DDF:
-
+DDF ddf = sparkDDFManager.sql2ddf("select * from airline", "spark");
+```
+###Get the number of rows/columns of the DDF:
+``` java
 ddf.getNumRows();
 print(ddf.getColumnNames());
 ```
@@ -122,7 +125,7 @@ print(newddf.VIEWS.head(2));
 Run Mllib’s KMeans on newddf:
 ``` java
 import org.apache.spark.mllib.clustering.KMeansModel;
-kmeansModel = (KMeansModel) newddf.ML.train("kmeans", 5, 5);
+kmeansModel = (KMeansModel) newddf.ML.train("kmeans", 5, 5).getRawModel();
 ```
 Predict on the kmeansModel:
 ``` java
@@ -132,14 +135,12 @@ print(kmeansModel.predict(new double[] { 1232, 1341, 389, 100, 9 }));
 ## Use Spark's Java API
 You can also play with Spark’s Java API from the ddf-shell
 ``` java
-sc = manager.getJavaSharkContext();
-JavaRDD logData = sc.textFile("README.md").cache();
-print("nrow=" +logData.count());
+sc = sparkDDFManager.getJavaSparkContext();
 ```
 
 When done analysis, shutdown the DDFManager
 ``` java
-manager.shutdown();
+sparkDDFManager.shutdown();
 ```
 
 <a name="ddf-R"></a>
@@ -156,7 +157,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$JAVA_LD_LIBRARY_PATH
 ```
 After this step you can start running provided example by using this command
 ``` R
-Rscript examples/basics.R
+Rscript examples/spark.R
 ```
 
 <a name="ddf-python"></a>

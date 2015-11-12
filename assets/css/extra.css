@@ -14,3 +14,51 @@
 }
 
 .iframe-links li{ list-style: none; display: inline-block; margin-right: 20px; }
+
+@media only screen and (max-width: 767px){
+	header.desktop-menu {
+		display: none;
+	}
+
+	header.mobile-menu {
+		display: block;
+		z-index: 1000;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	header.desktop-menu {
+		display: block;
+	}
+
+	header.mobile-menu {
+		display: none;
+	}
+}
+
+/* mobile menu */
+header.mobile-menu > ul li.logo {
+	width: auto;
+	display: block;
+}
+
+header.mobile-menu > ul li[class*=nav] {
+	display: none;
+}
+
+header.mobile-menu.active > ul li {
+	display: block;
+}
+
+header.mobile-menu > ul li:hover {
+	border-top-color: transparent;
+}
+
+header.mobile-menu .menu-button {
+	color: white;
+	position: absolute;
+	right: 0;
+	font-size: 1.5em;
+	padding: 15px 15px;
+	cursor: pointer;
+}

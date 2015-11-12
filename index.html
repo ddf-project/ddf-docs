@@ -7,7 +7,7 @@
     <meta name="robots" content="index,follow,noarchive" />
     <title>Distributed DataFrame</title>
 
-    
+
         <!-- Hammer reload -->
           <script>
             setInterval(function(){
@@ -16,11 +16,11 @@
                 ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
                 ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
                 ws.onmessage = function(){
-                  var links = document.getElementsByTagName('link'); 
-                    for (var i = 0; i < links.length;i++) { 
-                    var link = links[i]; 
-                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
-                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                  var links = document.getElementsByTagName('link');
+                    for (var i = 0; i < links.length;i++) {
+                    var link = links[i];
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) {
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,'');
                       link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
                     }
                   }
@@ -29,16 +29,16 @@
             }, 1000)
           </script>
         <!-- /Hammer reload -->
-      
-  
+
+
     <link rel='stylesheet' href='assets/css/normalize.css'>
 <link rel='stylesheet' href='assets/js/modernizr/test/caniuse_files/style.css'>
 <link rel='stylesheet' href='assets/scss/app.css'>
 <link rel='stylesheet' href='assets/js/prismjs/prism.css'>
 <link rel='stylesheet' href='assets/css/extra.css'>
-    
+
     <!-- <link href='http://fonts.googleapis.com/css?family=Arimo:400,700|Open+Sans:300|Roboto:400,900' rel='stylesheet' type='text/css'>
- -->    
+ -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400|Tenor+Sans' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/favicon.ico" rel="shortcut icon">
@@ -46,47 +46,73 @@
   </head>
   <body class="home">
     <div class="wrapper">
-    <header>
+    <header class="desktop-menu">
       <ul>
     <li class="logo"><a href="/">Home</a></li>
     <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
     <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
-    <li class="nav-design"><a href="design.html">Design Document</a></li>
+    <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
     <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
-    <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li>
+    <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
     <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
-    <li class="nav-plans"><a href="plans.html">Plans</a></li>
+    <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
+    <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
     <li class="nav-contribute">
-    	<a href="http://ddf.io/contribution.html" >Contribute</a>
-    </li>
-</ul>
+    	<a href="http://ddf.io/contribution.html">Contribute</a>
+      </li>
+      </ul>
+    </header>
+    <header class="mobile-menu">
+      <ul>
+        <li class="logo">
+          <a href="/">Home</a>
+
+          <span class="menu-button">
+            <i class="fa fa-bars fa-lg"></i>
+          </span>
+        </li>
+        <li class="nav-quickstart"><a href="quickstart.html">Getting Started</a></li>
+        <li class="nav-intro"><a href="introduction.html">Introduction</a></li>
+        <!-- <li class="nav-design"><a href="design.html">Design Document</a></li> -->
+        <li class="nav-api"><a href="https://github.com/ddf-project/DDF" target="_blank">Github</a></li>
+        <!-- <li class="nav-api"><a href="http://ddf.io/quickstart.html#markdown/downloads.html" target="_blank">Download</a></li> -->
+        <li class="nav-people"><a href="quickstart.html#markdown/developers.html">Contributors</a></li>
+        <li class="nav-people"><a href="https://groups.google.com/forum/#!forum/ddf-project">Community</a></li>
+        <!-- <li class="nav-plans"><a href="plans.html">Plans</a></li> -->
+        <li class="nav-contribute-mobile">
+          <a href="http://ddf.io/contribution.html">Contribute</a>
+        </li>
+      </ul>
     </header>
 
 <section class="row" id="ddf-intro">
   <div class="content">
-  <h1>Distributed Data Frame</h1>
-      <h3>Target Audience: Data Scientists &amp; Engineers</h3>
-      <h3>Goal: To Maximize Your Data Analysis Productivity through Simplicity, without compromising Power &amp; Sophistication.</h3>
+      <h1>
+
+Distributed DataFrame</h1>
+      <h3>Simplify Analytics on Disparate Data Sources <br>via a Uniform API Across Engines</h3>
+      <div class="cta">
+        <a href="quickstart.html" class="call-to-action button get-started radius expand">Get Started</a>
+      </div>
+      <div class="secondary-cta">
+        <a href="https://adatao.com/wp-content/ddf2.zip" class="">Download Binary</a>
+        &emsp;&emsp; | &emsp;&emsp;
+        <a href="https://github.com/ddf-project/DDF/archive/master.zip" class="">Download Source Code</a>
+      </div>
+
     <div class="large-12 columns">
       <div class="row" id="section1">
        <div class="large-5 columns">
           <ul class="benefits">
           <font size="5">
-          DDF (Distributed DataFrame) provides a powerful yet simple, table-like abstraction on top of any Big-Data engine underneath.
+          A simple yet powerful API above &amp; across multiple data and compute engines. You now can:
           </font>
-          <br><br>
-          DDF has been implemented on top of Apache Spark, and is the engine powering Adatao's data applications.
-          <br><br>
+          <br>
             <!--<li class="fa fa-check"> Table-like abstraction on top of big data</li>-->
-            <li class="fa fa-check"> Treat parallel, distributed data sets like one big table </li>
-            <li class="fa fa-check"> Idiomatic R-inspired user experience</li>
-            <li class="fa fa-check"> Focus on analytics, not MapReduce</li>
-            <li class="fa fa-check"> Seamlessly integrate with external ML libraries</li>
-            <li class="fa fa-check"> Share and collaborate on DDFs via URIs</li>
-            <li class="fa fa-check"> Use multiple languages (Java, Scala, R, Python)</li>
+            <li><i class="fa fa-space-shuttle"></i> &nbsp; Process data at-source</li>
+            <li><i class="fa fa-space-shuttle"></i> &nbsp; Bypass the absolute requirement for a Hadoop data lake</li>
+            <li><i class="fa fa-space-shuttle"></i> &nbsp; Future-proof your analytics applications against rapidly changing data and compute engine landscape</li>
           </ul>
-
-          <a href="/quickstart.html" class="call-to-action button radius expand">Get Started</a>
         </div>
         <div class="large-7 columns">
           <div class="terminal">
@@ -99,22 +125,21 @@
               <div class="content active" id="ddf-java">
                 <pre class="language-clike">
 <code class="language-clike">//To start working with a DDF-on-Spark cluster:
-DDFMananager smanager = DDFManager.get("spark");
-
+DDFManager smanager = DDFManager.get("spark");
 //Then, data can be loaded into a SparkDDF as follows:
-DDF table = smanager.sql2ddf("select * from airline");
-
-/* Basic Statistic */
-Summary[] summary = table.summary()
-
+DDF table = smanager.sql2ddf("select * from airline", "spark");
 /* ETL, transform */
-table = table.Transform.transformUDF("dist= round(distance/2, 2)");
-
-/* Run Machine learning using MLlib */
+table = table.transform("dist= round(distance/2, 2)");
+/* Run Machine learning using MLlib, then run prediction */
 KMeansModel kmeansModel = (KMeansModel) ddf.ML.train("kmeans", 5, 5).getRawModel();
-
-/* Run prediction */
-Int prediction = ddf.ML.applyModel(kmeansModel, false, true)</code>
+Int prediction = ddf.ML.applyModel(kmeansModel, false, true)
+// To start working with flink:
+DDFManager fmanager = DDFManager.get("flink");
+// Data can be loaded into FlinkDDF as follows:
+DDF flinkTable = fmanager.sql2ddf("select * from airline", "flink");
+/* ETL, SQL query */
+flinkTable.sql("select * from @this", "Error in SQL");
+</code>
 </pre>
 </div>
               <div class="content" id="ddf-r">
@@ -156,11 +181,51 @@ ddf.getNumColumns()</code>
             </div>
 
           </div>
-        </div> 
-      </div>      
+        </div>
+      </div>
     </div>
   </div>
   </section>
+
+
+  <section class="row" id="implementation">
+    <div class="content">
+      <div class="large-12 columns">
+        <h2>Implemented on</h2>
+        <ul>
+          <li>
+            <img src="images/spark.png">
+          </li>
+          <li>
+            <img src="images/flink.png">
+          </li>
+          <li>
+            <img src="images/jdbc.png">
+          </li>
+        </ul>
+      </div>
+
+      <div class="large-12 columns">
+        <h2>Coming soon</h2>
+        <ul>
+          <li>
+            <img src="images/presto.png">
+          </li>
+          <li>
+            <img src="images/cassandra.png">
+          </li>
+          <li>
+            <img src="images/ignite.png">
+          </li>
+          <li>
+            <img src="images/bigquery.png">
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
 
   <section class="row" id="ddf-principles">
     <div class="content">
@@ -193,18 +258,9 @@ ddf.getNumColumns()</code>
         </p>
       </div>
       <br>
-    </div>    
+    </div>
   </section>
- <section class="row" id="ddf-principles">
-    <div class="content">
 
-      <div class="large-12 columns"> 
-        <div align="center">
-        <iframe width="560" height="315" src="//www.youtube.com/embed/460Easvl6pk?list=PL-x35fyliRwgNYIV1P9prgtKyiMrTKp5k" frameborder="0" allowfullscreen=""></iframe>
-        </div>
-      </div>    
-  </section>
-  
   <section id="testimonials">
     <div class="content">
       <h2>What People Are Saying About DDF</h2>
@@ -220,18 +276,23 @@ ddf.getNumColumns()</code>
       </ul>
     </div>
   </section>
-  
+
 		<div class="push"></div>
 	</div>
 	<footer>
       <div class="content">
         Project supported by <a href="http://www.adatao.com" target="_blank">Adatao</a>
+        <div class="social">
+          <a class="github-button" href="https://github.com/ddf-project/DDF" data-count-href="/ddf-project/DDF/stargazers" data-count-api="/repos/ddf-project/DDF#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star ddf-project/DDF on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/ddf-project/DDF/fork" data-count-href="/ddf-project/DDF/network" data-count-api="/repos/ddf-project/DDF#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork ddf-project/DDF on GitHub">Fork</a>
+        </div>
       </div>
     </footer>
 	<script src='assets/js/jquery-1.8.3.min.js'></script>
 <script src='assets/js/modernizr/modernizr.js'></script>
 <script src='assets/js/foundation/js/foundation.js'></script>
-<script src='assets/js/app.js'></script>
+<script src='assets/js/app.js?v=20151112'></script>
 <script src='assets/js/prismjs/prism.js'></script>
 
 <script>
@@ -244,6 +305,6 @@ ddf.getNumColumns()</code>
   ga('send', 'pageview');
 
 </script>
-	
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>

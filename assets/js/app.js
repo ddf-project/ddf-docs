@@ -1,4 +1,4 @@
-$(document).ready(function(){ 
+$(document).ready(function(){
 
     $(document).foundation({
       tab: {
@@ -21,4 +21,10 @@ $(document).ready(function(){
     	window.location.hash = link;
     })
 
+    $('.mobile-menu .menu-button').click(function(e) {
+      $('.mobile-menu').toggleClass('active');
+
+      e.preventDefault();
+      e.stopPropagation();
+    });
 });
