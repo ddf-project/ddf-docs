@@ -43,19 +43,46 @@ git clone https://github.com/ddf-project/DDF
 ## Building DDF
 If you're a binary user, you can skip the building part.
 
-DDF is currently compatible with Spark 1.3.1. For first time installation, it is required to run bin/run-once to download dependencies and sbt. Go into the top-level DDF directory and run:
+DDF is currently compatible with Spark 1.3.1. 
 
-``` sh
- bin/run-once.sh
- ```
-If there is no error, you can can run unit tests
+Now set up the neccessary environment variables (MAVEN_OPTS, JAVA_TOOL_OPTIONS) for the build.
+```
+cd DDF
+bin/set-env.sh
+```
+If you don't want to set up the environment variables every time, please add the commands into ~/.bashrc or ~/.bash_profile.
+
+If you don't have sbt and want to install, run the following command
+```
+bin/get-sbt.sh
+```
+Building ddf by
+```
+mvn clean install -DskipTests
+```
+Or if you want to just build separate modules, you can go into module directories and build, for example,
+```
+(cd core ; mvn clean install -DskipTests)
+(cd spark ; mvn clean install -DskipTests)
+```
+Or if you are more familar with the sbt tool,
+```
+sbt (bin/sbt) clean compile publishLocal
+```
+
+You can run unit tests by 
+```
+mvn test
+```
+
+Or if you want to run test for individual modules,
 ```
 cd core; mvn test
 cd spark; mvn test
 ```                
-If you use sbt
-``` sh
- bin/sbt clean compile package 
+Or if you are more familar with the sbt tool,
+``` 
+sbt (bin/sbt) test
 ```
 At this point, it should pass all unit tests.
 
