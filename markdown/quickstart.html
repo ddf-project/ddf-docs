@@ -60,17 +60,17 @@ Building ddf by
 ```
 mvn clean install -DskipTests
 ```
-Or if you want to just build separate modules, you can go into module directories and build, for example,
+Modules can also be built separately,
 ```
 (cd core ; mvn clean install -DskipTests)
 (cd spark ; mvn clean install -DskipTests)
 ```
-Or if you are more familar with the sbt tool,
+If you are more familar with the sbt tool,
 ```
 sbt (bin/sbt) clean compile publishLocal
 ```
 
-You can run unit tests by 
+Unit tests can be run by
 ```
 mvn test
 ```
