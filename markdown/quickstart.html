@@ -17,7 +17,7 @@ This document summarizes all instructions to help first time users to get and us
 * <a href="#prerequisites">Prerequisites</a>
 * <a href="#building-ddf">Building DDF</a>
 * <a href="#java-example">Running a Java example</a>
-* <a href="#ddf-shell">Interactive Analysis with DDF’s Shell</a>
+* <a href="#ddf-shell">Interactive Analysis with DDF's Shell</a>
 * <a href="#spark-api">Use Spark's Java API</a>
 * <a href="#ddf-R">Use DDF in R</a>
 * <a href="#ddf-R">Use DDF in Python</a>
@@ -34,7 +34,7 @@ This tutorial provides a quick introduction to using DDF with its implementation
 Java 7+, Scala 2.10.x, maven 3.x, git. 
 
 Download the DDF Binary from the website, or
-Clone DDF from github
+clone DDF from github
 
 ```
 git clone https://github.com/ddf-project/DDF
@@ -52,7 +52,7 @@ bin/set-env.sh
 ```
 If you don't want to set up the environment variables every time, please add the commands into ~/.bashrc or ~/.bash_profile.
 
-If you don't have sbt and want to install, run the following command
+Sbt can be installed by the following command
 ```
 bin/get-sbt.sh
 ```
@@ -94,27 +94,26 @@ Run this command in the DDF directory
 ```
 
 <a name="ddf-shell"></a>
-## Interactive Analysis with DDF’s Shell
-DDF’s shell provides a simple way to learn the API, as well as a powerful tool to analyze data interactively. It’s available in Java, Scala and Python
+## Interactive Analysis with DDF's Shell
+DDF's shell provides a simple way to learn the API, as well as a powerful tool to analyze data interactively. It's available in Java, Scala and Python
 ```
 bin/ddf-shell
 ```
-Each DDF application has a DDFManager as an entry point to a big data engine. To DDFManager for the Spark engine: 
-Now, let’s create a DDFManager for the Spark engine.
+Each DDF application has a DDFManager as an entry point to a big data engine. Now, let's create a DDFManager for the Spark engine.
 ``` java
 import  io.ddf.DDFManager;
-DDFManager sparkDDFManager = DDFManager.get(DDFManager.EngineType.SPARK);
+DDFManager sparkDDFManager = DDFManager.get("spark");
 ```
 
 Prepare data to run
 ``` java
-sparkDDFManager.sql("create table airline (Year int,Month int,DayofMonth int, DayOfWeek int,DepTime int,CRSDepTime int,ArrTime int,CRSArrTime int,UniqueCarrier string, FlightNum int, TailNum string, ActualElapsedTime int, CRSElapsedTime int, AirTime int, ArrDelay int, DepDelay int, Origin string, Dest string, Distance int, TaxiIn int, TaxiOut int, Cancelled int, CancellationCode string, Diverted string, CarrierDelay int, WeatherDelay int, NASDelay int, SecurityDelay int, LateAircraftDelay int ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ','", "spark");
-sparkDDFManager.sql("load data local inpath './resources/airlineWithNA.csv' into table airline", "spark");
+sparkDDFManager.sql("create table airline (Year int,Month int,DayofMonth int, DayOfWeek int,DepTime int,CRSDepTime int,ArrTime int,CRSArrTime int,UniqueCarrier string, FlightNum int, TailNum string, ActualElapsedTime int, CRSElapsedTime int, AirTime int, ArrDelay int, DepDelay int, Origin string, Dest string, Distance int, TaxiIn int, TaxiOut int, Cancelled int, CancellationCode string, Diverted string, CarrierDelay int, WeatherDelay int, NASDelay int, SecurityDelay int, LateAircraftDelay int ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ','", Boolean.FALSE);
+sparkDDFManager.sql("load data local inpath './resources/test/airlineWithNA.csv' into table airline", Boolean.FALSE);
 ```
 
 Create DDF
 ``` java
-DDF ddf = sparkDDFManager.sql2ddf("select * from airline", "spark");
+DDF ddf = sparkDDFManager.sql2ddf("select * from airline", Boolean.FALSE);
 ```
 ###Get the number of rows/columns of the DDF:
 ``` java
@@ -149,18 +148,19 @@ View some data in newddf:
 print(newddf.VIEWS.head(2));
 ```
 ### Machine learning
-Run Mllib’s KMeans on newddf:
+Run Mllib's KMeans on newddf:
 ``` java
 import org.apache.spark.mllib.clustering.KMeansModel;
 kmeansModel = (KMeansModel) newddf.ML.train("kmeans", 5, 5).getRawModel();
 ```
 Predict on the kmeansModel:
 ``` java
-print(kmeansModel.predict(new double[] { 1232, 1341, 389, 100, 9 }));  
+import org.apache.spark.mllib.linalg.Vectors;
+print(kmeansModel.predict(Vectors.dense(new double[] { 1232, 1341, 389, 100, 9 })));  
 ```
 <a name="spark-api"></a>
 ## Use Spark's Java API
-You can also play with Spark’s Java API from the ddf-shell
+You can also play with Spark Java API from the ddf-shell
 ``` java
 sc = sparkDDFManager.getJavaSparkContext();
 ```
@@ -172,10 +172,10 @@ sparkDDFManager.shutdown();
 
 <a name="ddf-R"></a>
 ## Use DDF in R
-DDF can be used in R language with the same user experience. DDF on R is very powerful API that bring the R idioms into big data processing. You can install DDF on R using the following command in the R directory.
+DDF can be used in R language with the same user experience. DDF on R is very powerful API that bring the R idioms into big data processing. After building DDF following previous steps, You can install DDF on R using the following command in the R directory.
 Go into DDF/R directory and run:
 ``` sh
-install.sh
+./install.sh
 ```
 It will install DDF on R package to system repo. Before using the package, users have to setup rJava environment by running those commands
 ```
@@ -189,10 +189,27 @@ Rscript examples/spark.R
 
 <a name="ddf-python"></a>
 ## Use DDF in Python
-DDF can also be used in Python. Just go to python directory and either
-``` python
-bin/pyddf or IPYTHON=1 bin/pyddf
-bin/pyddf examples/basics.py
+DDF can also be used in Python. After building DDF, we nned to install the requirements for pyddf: 
+```
+$ cd <DDF_DIRECTORY>/python
+$ pip install -r requirements.txt
+$ python setup.py develop
+```
+Then set environment variable
+```
+$ cd <DDF_DIRECTORY>
+$ export DDF_HOME=`pwd`
+```
+Now open your Python interpreter
+```
+$ cd <DDF_DIRECTORY>/python
+$ python
+```
+Run tests
+``` 
+$ cd <YOUR_DDF_DIRECTORY>/python
+$ DDF_HOME=../ python examples/basics.py
+$ DDF_HOME=../ python tests/test_ddf.py
 ```
 
 [Next you can visit our release notes. ](release_notes.html)
